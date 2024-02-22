@@ -44,6 +44,10 @@ const ChurchSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    medium: {
+      type: String,
+      required: true,
+    },
     diet: {
       type: String,
       default: 'February 2024',

@@ -7,6 +7,7 @@ exports.createUser = async (req, res) => {
     email,
     phone,
     kit,
+    medium,
     address,
     city,
     state,
@@ -25,6 +26,9 @@ exports.createUser = async (req, res) => {
     }
     if (!kit) {
       return res.status(400).json({ message: 'Kit cannot be empty' })
+    }
+    if (!medium) {
+      return res.status(400).json({ message: 'Medium of doing the program cannot be empty' })
     }
     if (!address) {
       return res.status(400).json({ message: 'Address cannot be empty' })
@@ -50,6 +54,7 @@ exports.createUser = async (req, res) => {
       email,
       phone,
       kit,
+      medium,
       address,
       city,
       state,
