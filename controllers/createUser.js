@@ -16,36 +16,36 @@ exports.createUser = async (req, res) => {
   try {
     const existingEmail = await Church.findOne({ email })
     if (!firstname) {
-      return res.status(400).json({ message: 'First name cannot be empty' })
+      return res.status(400).json({ error: 'First name cannot be empty' })
     }
     if (!surname) {
-      return res.status(400).json({ message: 'Surname cannot be empty' })
+      return res.status(400).json({ error: 'Surname cannot be empty' })
     }
     if (!email) {
-      return res.status(400).json({ message: 'Email cannot be empty' })
+      return res.status(400).json({ error: 'Email cannot be empty' })
     }
     if (!kit) {
-      return res.status(400).json({ message: 'Kit cannot be empty' })
+      return res.status(400).json({ error: 'Kit cannot be empty' })
     }
     if (!medium) {
-      return res.status(400).json({ message: 'Medium of doing the program cannot be empty' })
+      return res.status(400).json({ error: 'Medium of doing the program cannot be empty' })
     }
     if (!address) {
-      return res.status(400).json({ message: 'Address cannot be empty' })
+      return res.status(400).json({ error: 'Address cannot be empty' })
     }
     if (!city) {
-      return res.status(400).json({ message: 'City cannot be empty' })
+      return res.status(400).json({ error: 'City cannot be empty' })
     }
     if (!state) {
-      return res.status(400).json({ message: 'State cannot be empty' })
+      return res.status(400).json({ error: 'State cannot be empty' })
     }
     if (!country) {
-      return res.status(400).json({ message: 'Country cannot be empty' })
+      return res.status(400).json({ error: 'Country cannot be empty' })
     }
 
     if (existingEmail) {
       return res.status(400).json({
-        message: 'User is already registered',
+        error: 'User is already registered',
       })
     }
     const newUser = new Church({
