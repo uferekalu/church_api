@@ -62,7 +62,7 @@ exports.createUser = async (req, res) => {
     })
     const savedUser = await newUser.save()
     res.status(201).json({
-      message: 'User registered successfully',
+      message: 'You have been registered successfully!',
       user: savedUser,
     })
   } catch (err) {
