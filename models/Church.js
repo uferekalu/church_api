@@ -13,6 +13,7 @@ const ChurchSchema = new mongoose.Schema(
     email: {
       type: String,
       required: true,
+      unique: true,
       validate: {
         validator: function (v) {
           return /\S+@\S+\.\S+/.test(v)
