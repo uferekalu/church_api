@@ -51,7 +51,7 @@ const ChurchSchema = new mongoose.Schema(
     },
     diet: {
       type: String,
-      default: 'February 2024',
+      default: 'August 2024',
     },
   },
   { timestamps: true },
