@@ -11,7 +11,7 @@ exports.createUser = async (req, res) => {
     address,
     city,
     state,
-    country,
+    country
   } = req.body;
   
   try {
@@ -43,17 +43,20 @@ exports.createUser = async (req, res) => {
       return res.status(400).json({ error: 'Country cannot be empty' });
     }
 
-    // Normalize email to lowercase before querying
-    const existingEmail = await Church.findOne({ email: email.toLowerCase() });
+    // Check if the email is already registered for the same diet
+    const existingUser = await Church.findOne({
+      email: email.toLowerCase(),
+      diet: 'August 2024', // Assuming default diet is 'August 2024'
+    });
     
-    if (existingEmail) {
-      return res.status(400).json({ error: 'User is already registered' });
+    if (existingUser) {
+      return res.status(400).json({ error: `User with email ${email} is already registered for the ${existingUser.diet} diet.` });
     }
 
     const newUser = new Church({
       firstname,
       surname,
-      email: email.toLowerCase(), // Save email in lowercase
+      email: email.toLowerCase(), 
       phone,
       kit,
       medium,
@@ -61,6 +64,7 @@ exports.createUser = async (req, res) => {
       city,
       state,
       country,
+      diet: 'August 2024', // Use provided diet or default to 'August 2024'
     });
 
     const savedUser = await newUser.save();
